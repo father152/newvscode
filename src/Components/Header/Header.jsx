@@ -1,17 +1,33 @@
-import React from 'react';
-import piclogo from "../Image/header/icon.jpg"
-
-
+import React from "react";
+import { useState } from "react";
+import DropdownMenu from "./Dropdown/DropdownMenu";
+import "./header.css"
 
 function Header() {
-    return (
-        <div className='header'>
-        <div className='logo'>
-            <img src={piclogo} alt="picture"></img>
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+  const handleMouseEnter = () => {
+    setDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownVisible(false);
+  };
+
+  return (
+    <div className="header">
+      <header>
+        <div
+          className="menu"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button>MENU</button>
+         {isDropdownVisible && <DropdownMenu />}
         </div>
-            <h1>WELCOME !</h1>
-        </div>
-    );
+      </header>
+    </div>
+  );
 }
 
-export  {Header};
+export { Header };
